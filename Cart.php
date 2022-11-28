@@ -34,9 +34,9 @@ class Cart
         {
             if ($product->getId() === $this->items[$i]->getProduct()->getId())
             {
-                echo "Remove: " . $product->getTitle();
-                //unset($product);
-                array_splice($this->items, $i, 1);
+                unset($this->items[$i]);
+                $this->items = array_values($this->items); // Reindex the array after unset
+                //array_splice($this->items, $i, 1);
                 break;
             }
         }

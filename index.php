@@ -44,7 +44,7 @@ echo $cart->getTotalSum() . "<br>"; // Detta skall skriva ut 6900
 
 //Tar bort product1 ur kundvagnen
 $cart->removeProduct($product1);
-$cart->removeProduct($product2); // TA BORT
+//$cart->removeProduct($product2); // TA BORT-------------------------------------------
 
 //Skriver ut antalet produkter i kundvagnen efter borttag
 echo "<h3>Antal produkter i kundvagnen efter borttag av produkt: </h3>";
@@ -74,16 +74,16 @@ Antal: 1
 */
 
 //Kommentera in nedan kod om du satsar på VG
-// echo "<h3>Namn och kvantitet på alla items i kundvagnen: </h3>";
+echo "<h3>Namn och kvantitet på alla items i kundvagnen: </h3>";
 
-// foreach ($cart->getItems() as $item) {
-//     $cartItemName = $item->getProduct()->getTitle();
-//     $cartItemQuantity = $item->getQuantity();
+foreach ($cart->getItems() as $item) {
+    $cartItemName = $item->getProduct()->getTitle();
+    $cartItemQuantity = $item->getQuantity();
 
-//     echo "<p>Titel: $cartItemName</p>";
-//     echo "<p>Antal: $cartItemQuantity</p>";
-//     echo "-------------------------<br><br>";
-// }
+    echo "<p>Titel: $cartItemName</p>";
+    echo "<p>Antal: $cartItemQuantity</p>";
+    echo "-------------------------<br><br>";
+}
 
 
 // echo "<h3>Lägger till en fjärde M2 SSD fast det bara finns 3 i lager: </h3>";
