@@ -21,8 +21,14 @@ class Cart
      */
     public function addProduct($product, $quantity)
     {
-        $cartItem = new CartItem($product, $quantity);
-        $this->items[] = $cartItem;
+        if (isset($this->items[$product->getId()])) {
+            $cartItem = $this->items[$product->getId()];
+            $cartItem->increaseQuantity();
+        } else {
+            $cartItem = new CartItem($product, $quantity);
+            $this->items[$product->getId()] = $cartItem;
+        }
+        
         return $cartItem;
     }
 
@@ -30,27 +36,14 @@ class Cart
     //Skall ta bort en produkt ur kundvagnen (använd unset())
     public function removeProduct($product)
     {
-        for($i=0; $i<count($this->items); $i++)
-        {
-            if ($product->getId() === $this->items[$i]->getProduct()->getId())
-            {
-                unset($this->items[$i]);
-                $this->items = array_values($this->items); // Reindex the array after unset
-                //array_splice($this->items, $i, 1);
-                break;
-            }
-        }
-
-        
-        // $index = 0;
-
-        // foreach ($this->items as $item) {
-        //     if ($product->getId() === $item->getProduct()->getId())
-        //     {
-        //         echo "Remove: " . $product->getTitle();
-        //         unset($this->items[$index]);
+        unset($this->items[$product->getId()]);
+        // for ($i=0; $i<count($this->items); $i++) {
+        //     if ($product->getId() === $this->items[$i]->getProduct()->getId()) {
+        //         unset($this->items[$i]);
+        //         $this->items = array_values($this->items); // Reindex the array after unset
+        //         //array_splice($this->items, $i, 1);
+        //         break;
         //     }
-        //     $index++;
         // }
     }
 
