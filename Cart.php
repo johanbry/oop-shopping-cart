@@ -37,14 +37,6 @@ class Cart
     public function removeProduct($product)
     {
         unset($this->items[$product->getId()]);
-        // for ($i=0; $i<count($this->items); $i++) {
-        //     if ($product->getId() === $this->items[$i]->getProduct()->getId()) {
-        //         unset($this->items[$i]);
-        //         $this->items = array_values($this->items); // Reindex the array after unset
-        //         //array_splice($this->items, $i, 1);
-        //         break;
-        //     }
-        // }
     }
 
     //Skall returnera totala antalet produkter i kundvagnen
