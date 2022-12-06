@@ -44,7 +44,6 @@ echo $cart->getTotalSum() . "<br>"; // Detta skall skriva ut 6900
 
 //Tar bort product1 ur kundvagnen
 $cart->removeProduct($product1);
-//$cart->removeProduct($product2); // TA BORT-------------------------------------------
 
 //Skriver ut antalet produkter i kundvagnen efter borttag
 echo "<h3>Antal produkter i kundvagnen efter borttag av produkt: </h3>";
@@ -86,5 +85,5 @@ foreach ($cart->getItems() as $item) {
 }
 
 
-// echo "<h3>Lägger till en fjärde M2 SSD fast det bara finns 3 i lager: </h3>";
-// $cartItem2->increaseQuantity(); //Skall skriva ut "Kan inte lägga till. Slut i lager"
+echo "<h3>Lägger till en fjärde M2 SSD fast det bara finns 3 i lager: </h3>";
+$cartItem2->increaseQuantity(); //Skall skriva ut "Kan inte lägga till. Slut i lager"
